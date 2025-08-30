@@ -1,0 +1,141 @@
+# Logs
+*.log
+.mcp-server.log
+.mcp-start.log
+.mcp-autosave.log
+
+# Runtime files
+*.pid
+.mcp-server.pid
+
+# Memory and data files
+.mcp-memory/
+*.json.bak
+backup_*.json
+
+# Node modules
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# TypeScript compiled output
+dist/
+build/
+*.tsbuildinfo
+
+# IDEs and editors
+.vscode/
+!.vscode-template/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+
+# nyc test coverage
+.nyc_output
+
+# Dependency directories
+jspm_packages/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# dotenv environment variables file
+.env
+
+# parcel-bundler cache (https://parceljs.org/)
+.cache
+.parcel-cache
+
+# next.js build output
+.next
+
+# nuxt.js build output
+.nuxt
+
+# vuepress build output
+.vuepress/dist
+
+# Serverless directories
+.serverless
+
+# FuseBox cache
+.fusebox/
+
+# DynamoDB Local files
+.dynamodb/
+
+# TernJS port file
+.tern-port
+
+# Stores VSCode versions used for testing VSCode extensions
+.vscode-test
+
+# Temporary folders
+tmp/
+temp/
+
+# MCP specific
+.mcp-installed
+.mcp-backup/
+
+# Test artifacts
+test-results/
+test-outputs/
+
+# Documentation build
+docs/build/
+
+# macOS specific
+*.dmg
+
+# Windows specific
+*.exe
+*.msi
+
+# Archive files
+*.zip
+*.tar.gz
+*.rar
+
+# Local configuration overrides
+local-config.json
+user-config.json
+
+# Development only files
+dev-only/
+playground/
+sandbox/

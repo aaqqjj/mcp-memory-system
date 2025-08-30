@@ -1,0 +1,105 @@
+{
+  "name": "mcp-memory-system",
+  "version": "1.0.0",
+  "description": "Sistema de memoria persistente basado en Model Context Protocol (MCP) para asistentes de IA con auto-instalación global y guardado automático de conversaciones",
+  "main": "mcp-global.sh",
+  "scripts": {
+    "install-global": "./configure-mcp-global.sh",
+    "start": "./auto-start-mcp.sh",
+    "stop": "./stop-mcp.sh",
+    "build": "cd mcp-memory-server && npm install && npm run build",
+    "test": "cd mcp-memory-server && npm test",
+    "lint": "cd mcp-memory-server && npm run lint",
+    "clean": "rm -rf .mcp-memory .mcp-server.* && cd mcp-memory-server && npm run clean",
+    "setup": "chmod +x *.sh && npm run build",
+    "verify": "bash -c 'command -v mcp && echo \"✅ MCP global command available\" || echo \"❌ MCP global command not found\"'"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "ai-memory",
+    "persistent-memory",
+    "conversation-history",
+    "ai-assistant",
+    "memory-system",
+    "auto-save",
+    "global-installation",
+    "vscode-integration",
+    "typescript",
+    "bash-scripts"
+  ],
+  "author": {
+    "name": "Manuel Fernández del Real",
+    "email": "tu-email@dominio.com",
+    "url": "https://github.com/tu-usuario"
+  },
+  "contributors": [
+    {
+      "name": "Manuel Fernández del Real",
+      "email": "tu-email@dominio.com",
+      "role": "Creator and Main Maintainer"
+    }
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tu-usuario/mcp-memory-system.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tu-usuario/mcp-memory-system/issues"
+  },
+  "homepage": "https://github.com/tu-usuario/mcp-memory-system#readme",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "os": [
+    "darwin",
+    "linux"
+  ],
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "files": [
+    "README.md",
+    "LICENSE",
+    "INSTALLATION.md",
+    "USAGE.md",
+    "CONTRIBUTING.md",
+    "*.sh",
+    "mcp-memory-server/",
+    ".vscode-template/",
+    "project-config.json"
+  ],
+  "bin": {
+    "mcp-memory": "./mcp-global.sh"
+  },
+  "config": {
+    "global_path": "/usr/local/mcp",
+    "auto_save_interval": 300,
+    "memory_retention_days": 30,
+    "debug": false
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/tu-usuario"
+  },
+  "badges": [
+    {
+      "description": "MCP Version",
+      "href": "https://github.com/tu-usuario/mcp-memory-system",
+      "url": "https://img.shields.io/badge/MCP-v1.0.0-blue"
+    },
+    {
+      "description": "Node.js Version",
+      "href": "https://nodejs.org/",
+      "url": "https://img.shields.io/badge/Node.js-18%2B-green"
+    },
+    {
+      "description": "License",
+      "href": "https://github.com/tu-usuario/mcp-memory-system/blob/main/LICENSE",
+      "url": "https://img.shields.io/badge/License-MIT-yellow"
+    }
+  ]
+}

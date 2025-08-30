@@ -1,0 +1,15 @@
+{
+  "mcpVersion": "1.0.0",
+  "projectTemplate": "universal",
+  "autoDetectProject": true,
+  "memoryCategories": [
+    "conversation",
+    "code-iterations", 
+    "decisions",
+    "bugs-fixes",
+    "architecture",
+    "todos"
+  ],
+  "backupEnabled": true,
+  "autoStart": true
+}
