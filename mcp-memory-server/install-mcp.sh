@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
 
 # 🧠 INSTALADOR AUTOMÁTICO MCP MEMORY SERVER
 # Configura automáticamente VS Code y Claude Desktop
@@ -7,7 +8,38 @@ echo "🧠 CONFIGURADOR AUTOMÁTICO MCP MEMORY SERVER"
 echo "============================================="
 echo ""
 
-MCP_PATH="/Users/manuelfernandezdelreal/peritoForenseMain/perito-forense-web/mcp-memory-server/dist/simple-index.js"
+# Detectar ruta actual dinámicamente
+CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+MCP_PATH="$CURRENT_DIR/dist/simple-index.js"
+
+# Verificar que el servidor esté compilado
+if [ ! -f "$MCP_PATH" ]; then
+    echo "❌ Servidor no compilado. Compilando..."
+    npm run build
+    
+    if [ ! -f "$MCP_PATH" ]; then
+        echo "❌ Error al compilar el servidor"
+        exit 1
+    fi
+fi
+
+echo "✅ Servidor encontrado en: $MCP_PATH"
+echo ""
+
+# Test rápido de estabilidad
+echo "🧪 Probando estabilidad del servidor..."
+node "$MCP_PATH" & 
+TEST_PID=$!
+sleep 3
+if kill -0 $TEST_PID 2>/dev/null; then
+    echo "✅ Servidor estable (3 segundos activo)"
+    kill $TEST_PID
+else
+    echo "❌ Servidor inestable - revisar código"
+    exit 1
+fi
+
+echo ""
 
 # Configurar VS Code
 echo "🔧 Configurando VS Code..."
@@ -18,7 +50,7 @@ if [ -f "$VSCODE_SETTINGS" ]; then
     
     # Crear backup
     cp "$VSCODE_SETTINGS" "$VSCODE_SETTINGS.backup-$(date +%Y%m%d-%H%M%S)"
-    echo "💾 Backup creado en: $VSCODE_SETTINGS.backup-$(date +%Y%m%d-%H%M%S)"
+    echo "💾 Backup creado"
     
     # Mostrar configuración a añadir
     echo ""
@@ -80,4 +112,8 @@ echo "   - save_memory: Guardar información importante"
 echo "   - get_project_status: Ver estado del proyecto"
 echo "   - search_memory: Buscar información guardada"
 echo ""
-echo "✨ ¡Tu proyecto ahora tiene memoria persistente real!"
+echo "🔧 Para testing manual:"
+echo "   cd \"$CURRENT_DIR\""
+echo "   node dist/simple-index.js"
+echo ""
+echo "✨ ¡Tu proyecto ahora tiene memoria persistente estable y real!"

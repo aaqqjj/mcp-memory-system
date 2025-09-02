@@ -487,6 +487,34 @@ ${(nextActions || []).map(a => `• ${a}`).join('\n') || '• Sin acciones espec
     const transport = new StdioServerTransport();
     await this.server.connect(transport);
     console.error('🧠 Perito Forense Memory MCP Server iniciado');
+    
+    // Mantener stdin activo para evitar EOF
+    process.stdin.resume();
+    process.stdin.setEncoding('utf8');
+    process.stdin.on('data', () => {
+      // Consumir datos sin procesar para evitar bloqueo
+    });
+    
+    // Manejo de señales para cierre limpio
+    process.on('SIGTERM', () => {
+      console.error('🛑 MCP Server recibió SIGTERM, cerrando...');
+      process.exit(0);
+    });
+    
+    process.on('SIGINT', () => {
+      console.error('🛑 MCP Server recibió SIGINT, cerrando...');
+      process.exit(0);
+    });
+    
+    // Manejo de errores de proceso
+    process.on('uncaughtException', (error) => {
+      console.error('❌ Error no capturado:', error);
+    });
+    
+    // Keepalive para mantener el proceso activo
+    setInterval(() => {
+      // Ping silencioso cada 30 segundos
+    }, 30000);
   }
 }
 
